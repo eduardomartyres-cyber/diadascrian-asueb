@@ -1,1 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quem é essa criança?</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #3b82f6;
+      --success: #16a34a;
+      --danger: #dc2626;
+      --background: #eff6ff;
+      --card-bg: #ffffff;
+      --text: #1f2937;
+    }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    #app {
+      width: 100%;
+      max-width: 600px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      padding: 24px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    p.subtitle {
+      color: #6b7280;
+      font-size: 1rem;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background-color: #e5e7eb;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background-color: var(--primary-light);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .question-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .image-container {
+      width: 100%;
+      max-height: 350px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      background-color: #f3f4f6;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: auto;
+      max-height: 350px;
+      object-fit: contain;
+    }
+
+    .prompt {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .options-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .opt {
+      padding: 14px 20px;
+      font-size: 1rem;
+      font-weight: 500;
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
+      background-color: #fff;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+
+    .opt:hover:not([disabled]) {
+      border-color: var(--primary-light);
+      background-color: #f0f7ff;
+    }
+
+    .opt.correct {
+      background-color: #dcfce7;
+      border-color: var(--success);
+      color: #15803d;
+    }
+
+    .opt.incorrect {
+      background-color: #fee2e2;
+      border-color: var(--danger);
+      color: #b91c1c;
+    }
+
+    .opt[disabled] {
+      cursor: default;
+    }
+
+    .next-btn {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      background-color: var(--primary);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      display: none;
+    }
+
+    .next-btn:hover {
+      background-color: #1d4ed8;
+    }
+
+    .result-screen {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .result-score {
+      font-size: 2.5rem;
